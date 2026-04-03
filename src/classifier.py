@@ -1,16 +1,29 @@
+from src.utils import potas_message
+
 
 class Recommend:
     def __init__(self):
-        self.recommend_based_friends
-        self.recommend_based_like
-        self.add_history
+        self.recommend
 
-    def recommend_based_like(self, user_id: str, history: dict):
-        if not user_id: 
-            raise ValueError("User ID cannot be empty | Potassio don't like empty user ID")
+    def recommmend(self, user_id: str, history: dict, content: dict):
+        if not user_id:
+            raise ValueError("User ID is required", potas_message)
+        
+        counter = 0
+        for c in content:
+            for i in history.content:
+                if c == i:
+                    counter+=1
+        response = {
+            "user_id": user_id,
+            "recommendation": content[:counter]
+        }
+        return response
     
-    def recommend_based_friends(self, user_id: str, friend_id: str, history: dict):
-        pass
+        
+
+                
+    
 
  
     
